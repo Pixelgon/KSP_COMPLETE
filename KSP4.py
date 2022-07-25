@@ -27,4 +27,5 @@ for x in sA:
 output = open("01.out", "w")
 output.write(str(ndvojic))
 output.close()
+print("Hotovo!")
 exit()

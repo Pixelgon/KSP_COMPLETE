@@ -33,3 +33,8 @@ while n != 0:
     else:
         output.write("SLOZENE"+"\n")
     n -= 1
+
+origin.close()
+output.close()
+print("Hotovo!")
+exit()
