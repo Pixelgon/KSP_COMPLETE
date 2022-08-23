@@ -10,14 +10,16 @@ def output(text, a, b, c, d):
     out.write(text[c:-1-d]+"\n")
     out.close()
     print("Hotovo!")
+
+
 # Nacteni hodnot
 origin = open("01.in", "r")
-text = origin.readline()
-a = int(origin.readline())
-b = int(origin.readline())
-c = int(origin.readline())
-d = int(origin.readline())
+string = origin.readline()
+aN = int(origin.readline())
+bN = int(origin.readline())
+cN = int(origin.readline())
+dN = int(origin.readline())
 origin.close()
-#volani funkce
-output(text, a, b, c, d)
+# volani funkce
+output(string, aN, bN, cN, dN)
 exit()
