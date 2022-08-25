@@ -4,64 +4,55 @@
 # -----------------------------------------------------------
 from math import ceil, floor, sqrt
 
-def isprime(cislo):
-    if cislo == 1:
-        return False
-
-    if cislo == 2:
-        return True
-    if cislo > 2 and cislo % 2 == 0:
-        return False
-
-    max_delitel = floor(sqrt(cislo))
-    for a in range(3, 1 + max_delitel, 2):
-        if cislo % x == 0:
-            return False
-    return True
+def isprime(N):
+    prime_num = True
+    for j in range(2, N):
+        if (N % j) == 0:
+            prime_num = True
+            return True
+            break
 
 origin = open("01.in", "r")
 n = int(origin.readline())
 origin.close()
 
-odmocnina = ceil(floor(n))
-radek = " " * odmocnina
+odmocnina = ceil(sqrt(n))
+radek = " " * odmocnina + " "
 sloupec = []
 for i in range(odmocnina):
     sloupec.append(radek)
 x = odmocnina // 2
 y = odmocnina // 2
-
-if odmocnina % 2 == 0:
-    x -= 1
-    y -= 1
-
 sloupec[y] = sloupec[y][:x] + "X" + sloupec[y][x+1:]
 smer = 0
 
-for i in range(2, n ):
-    if smer == 0:
-        x += 1
-        if sloupec[y-1][x] == " ":
-            smer = 1
-        if smer == 1:
+for i in range(2, n+1):
+        if smer == 0: #smer vpravo
+            x += 1
+            if sloupec[y-1][x] == " ":
+                smer = 1 
+        elif smer == 1: 
             y -= 1
             if sloupec[y][x-1] == " ":
-                smer = 2
-        if smer == 2:
+                smer = 2 
+        elif smer == 2: 
             x -= 1
             if sloupec[y+1][x] == " ":
-                smer = 3
-        if smer == 3:
+                smer = 3 
+        elif smer == 3: 
             y += 1
             if sloupec[y][x+1] == " ":
-                smer = 0
-        if isprime(i):
-            sloupec[y] = sloupec[y][:x] + "#" + sloupec[y][x + 1:]
-        else:
+                smer = 0 
+        if isprime(i) is True:
             sloupec[y] = sloupec[y][:x] + "." + sloupec[y][x + 1:]
+            print("yes")
+        else:
+            sloupec[y] = sloupec[y][:x] + "#" + sloupec[y][x + 1:]
+            print("no")
 
 output = open("01.out", "w")
-for x in sloupec:
+stripped = list(map(str.strip, sloupec))
+for x in stripped:
     output.write(x + "\n")
 output.close()
 exit()
